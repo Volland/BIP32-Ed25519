@@ -28,18 +28,11 @@
 
 DONNA_INLINE static void
 ed25519_extsk(hash_512bits extsk, const ed25519_unextended_secret_key sk) {
-	printf("\nBEF HASH SK: ");
-	hexToString2(sk, 32);
 
 	ed25519_hash(extsk, sk, 32);
-	printf("\AFT HASH SK: ", extsk);
-	hexToString2(extsk, 64);
-
 	extsk[0] &= 248;
 	extsk[31] &= 127;
 	extsk[31] |= 64;
-	printf("\nAFT SET ESK: ", extsk);
-	hexToString2(extsk, 64);
 }
 
 static void
@@ -182,17 +175,8 @@ int
 ED25519_FN(ed25519_extend) (const ed25519_unextended_secret_key seed, ed25519_secret_key secret)
 {
 
-	printf("\nBEFEXT SEED: ");
-	hexToString2(seed, 32);
-	printf("\nBEFEXT SECR: ", secret);
-	hexToString2(secret, 64);
-
 	ed25519_extsk(secret, seed);
 
-	/* invalid if 3rd highest bit set */
-	printf("\nAFTEX SECR: ");
-	hexToString2(secret, 64);
-	printf("SECRET[31] : %x", secret[31]);
 	if (secret[31] & 0x20)
 		return 1;
 	return 0;

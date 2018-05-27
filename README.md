@@ -1,8 +1,8 @@
-# ed25519
-A native implementation of Ed25519(http://ed25519.cr.yp.to/) for node.js
+# BIP-Ed25519
+A native implementation of Ed25519(http://ed25519.cr.yp.to/) for node.js https://github.com/floodyberry/ed25519-donna.git
 
 ## Installation
-npm install ed25519
+npm install bip-ed25519
 
 ## Usage
 For usage details see the example.js file.

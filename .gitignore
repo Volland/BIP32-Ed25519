@@ -2,6 +2,7 @@ build
 native.node
 node_modules
 npm-debug.log
+package-lock.json
 test.js
 .hg
 .hgignore

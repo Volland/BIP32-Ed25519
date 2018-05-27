@@ -1,1 +1,1 @@
-module.exports = require('bindings')('ed25519');
+module.exports = require('bindings')('bip-ed25519');

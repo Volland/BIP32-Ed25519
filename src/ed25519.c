@@ -20,6 +20,7 @@
 #include "ed25519-randombytes.h"
 #include "ed25519-hash.h"
 #include "Winsock2.h"
+#include "stdio.h"
 
 #define VARIANT_CODE
 

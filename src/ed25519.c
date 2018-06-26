@@ -22,6 +22,8 @@
 #include "Winsock2.h"
 #include "stdio.h"
 
+#pragma comment(lib, "ws2_32.lib")
+
 #define VARIANT_CODE
 
 /*

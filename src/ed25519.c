@@ -19,6 +19,11 @@
 #include "ed25519.h"
 #include "ed25519-randombytes.h"
 #include "ed25519-hash.h"
+#ifdef _WIN32
+#include "Winsock2.h"
+#include "stdio.h"
+#pragma comment(lib, "ws2_32.lib")
+#endif
 
 #define VARIANT_CODE
 

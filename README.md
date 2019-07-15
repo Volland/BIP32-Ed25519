@@ -1,6 +1,5 @@
 # BIP-Ed25519
-A native implementation of Ed25519(http://ed25519.cr.yp.to/) for node.js https://github.com/floodyberry/ed25519-donna.git
-
+A [BIP32-Ed25519 Hierarchical Deterministic Keys over a Non-linear Keyspace](https://cardanolaunch.com/assets/Ed25519_BIP.pdf) implementation of the riginal [Ed25519](http://ed25519.cr.yp.to/) for [node.js](https://github.com/floodyberry/ed25519-donna.git).
 ## Installation
 npm install bip-ed25519
 

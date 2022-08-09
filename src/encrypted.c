@@ -74,7 +74,7 @@ static void memory_combine(uint8_t const *pass, uint32_t const pass_len, uint8_t
 	}
 }
 
-static void unencrypt_start
+void unencrypt_start
     (uint8_t const*  pass,
      uint32_t const  pass_len,
      encrypted_key const *encrypted_key /* in */,
@@ -87,6 +87,7 @@ static void unencrypt_stop(ed25519_secret_key decrypted_key)
 {
 	clear(decrypted_key, sizeof(ed25519_secret_key));
 }
+
 static void wallet_encrypted_initialize
     (uint8_t const *pass, uint32_t const pass_len,
      const ed25519_secret_key secret_key,
@@ -95,11 +96,12 @@ static void wallet_encrypted_initialize
 {
 	ed25519_public_key pub_key;
 
-	ed25519_publickey(secret_key, pub_key);
-
+	
+    ed25519_publickey(secret_key, pub_key);
 	memory_combine(pass, pass_len, secret_key, encrypted_key->ekey, ENCRYPTED_KEY_SIZE);
 	memcpy(encrypted_key->pkey, pub_key, PUBLIC_KEY_SIZE);
 	memcpy(encrypted_key->cc, cc, CHAIN_CODE_SIZE);
+
 }
 
 int wallet_encrypted_from_secret

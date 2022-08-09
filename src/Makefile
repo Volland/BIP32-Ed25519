@@ -1,5 +1,5 @@
 CC    = gcc
-CFLAGS       = -fPIC -g -Wall -Wextra -I. -Ied25519-donna -Icryptonite
+CFLAGS       = -fPIC -g3 -Wall -Wextra -I. -Ied25519-donna -Icryptonite
 LDFLAGS      = -shared
 
 TARGET_LIB = libcryptonite.so

@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "ed25519.h"
+#include "ed25519-donna/ed25519.h"
 
 
 char *stringToHex(char source[], char *dest, int dlen) {
@@ -53,20 +53,39 @@ int main()
 	hexToString(iL, sizeof iL);
 	hexToString(iR, sizeof iR);
 
-	unsigned char esk[128] = {0};
-	wallet_encrypted_from_secret(passPhrase, 0, iL, iR, esk);
+	unsigned char sk[128] = {0};
+	wallet_encrypted_from_secret(passPhrase, 0, iL, iR, sk);
 
 	printf("\nEncryptedKey (PrivateKey, PublicKey and ChainCode):\n");
-	hexToString(esk, 64);
-	hexToString(&esk[64], 32);
-	hexToString(&esk[96], 32);
+	hexToString(sk, 64);
+	hexToString(&sk[64], 32);
+	hexToString(&sk[96], 32);
     
-	/* wallet_encrypted_derive_private(
-		esk,
-    	"", 0,
+	// encrypted sk
+	unsigned char esk[128] = {0};
+
+	unsigned int index = 10;
+
+	unsigned char tsk[128] = {0};
+	unsigned char etsk[128] = {0};
+	const char * pp = "";
+	stringToHex(pp, tsk, 128);
+	
+	wallet_encrypted_derive_private(
+		tsk,
+    	passPhrase, 0,
     	2147483648,
-    	firstAccount,
+		etsk,
 		1);
-	*/
+	
+		wallet_encrypted_derive_private(
+		etsk,
+    	passPhrase, 0,
+    	2147483648,
+		tsk,
+		1);
+	
+	hexToString(tsk, 128);
+
 	return;
 }
